@@ -1,0 +1,24 @@
+.page-home .container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.page-header {
+    height: 30px;
+    background-color: #fdf07d;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    /* justify-content: space-between; */
+}
+
+nav b {
+    margin-right: 10px;
+}
+
+.container.content-container {
+    margin-top: 30px;
+}

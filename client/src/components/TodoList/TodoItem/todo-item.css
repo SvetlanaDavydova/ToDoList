@@ -1,0 +1,19 @@
+.todo-item {
+    height: 30px;
+    font-size: 1.1rem;
+    display: flex;
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.todo-item-id {
+    flex-basis: 90px;
+    flex-shrink: 0;
+    flex-grow: 0;
+    color: rgb(139, 139, 139);
+}
+
+.todo-item-title {
+    flex-grow: 1;
+}

@@ -12,7 +12,7 @@ connection.connect(()=> console.log("connect to database"));
 exports.get = function(){
     return new Promise(function(resolve, reject){
         connection.query("SELECT * FROM todo", (err,results,fields) => {
-            if(err) reject (Error);
+            if(err) reject (err);
             resolve (results);
         })
     })
@@ -21,7 +21,7 @@ exports.get = function(){
 exports.getById = function(id){
     return new Promise(function(resolve, reject){
         connection.query("SELECT * FROM todo WHERE id = (?)",[id], (err,results,fields) => {
-            if(err) reject (Error);
+            if(err) reject (err);
             resolve (results[0]);
         })
     })
@@ -29,8 +29,8 @@ exports.getById = function(id){
 
 exports.create = function(title,status){
     return new Promise(function(resolve, reject){
-        connection.query("INSERT INTO todo VALUES (?,?)",[title,status], (err,results,fields) => {
-            if(err) reject (Error);
+        connection.query("INSERT INTO todo (title, todo_status) VALUES (?,?)", [title,status], (err,results,fields) => {
+            if(err) reject (err);
             resolve (results);
         })
     })
@@ -39,7 +39,7 @@ exports.create = function(title,status){
 exports.deleteToDo = function(id){
     return new Promise(function(resolve, reject){
         connection.query("DELETE FROM todo WHERE id = (?)",[id], (err,results,fields) => {
-            if(err) reject (Error);
+            if(err) reject (err);
             resolve (results[0]);
         })
     })
@@ -48,7 +48,7 @@ exports.deleteToDo = function(id){
 exports.changeStatus = function(status, id){
     return new Promise(function(resolve, reject){
         connection.query("UPDATE todo SET todo_status = (?) where id = (?)",[status,id], (err,results,fields) => {
-            if(err) reject (Error);
+            if(err) reject (err);
             resolve (results[0]);
         })
     })

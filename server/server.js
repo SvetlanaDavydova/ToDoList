@@ -4,8 +4,9 @@ const PORT = 3001;
 
 
 const rout = require("./routes/todo.routes");
+app.use(express.json());
 
-app.use("/todo", rout);
+app.use("/api/todo", rout);
 app.listen(PORT, () => {
    console.log("Server is listening on port" + PORT)
 });

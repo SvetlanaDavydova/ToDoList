@@ -3,3 +3,12 @@
     font-family:  Helvetica, sans-serif;
 }
 
+.page-home .container,
+.page-categories .container {
+    width: 500px;
+    margin: 0 auto;
+}
+
+.container.content-container {
+    margin-top: 30px;
+}

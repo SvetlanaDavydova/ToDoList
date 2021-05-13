@@ -1,0 +1,19 @@
+.button-container {
+    display: flex;
+    
+    button {
+
+        background-color: #f7b400;
+        color: white;
+        border: none;
+        padding: .35em 2em;
+
+        &:hover {
+            background-color: #ffd04e;
+        }
+        
+        &:active {
+            background-color: #5c470e;
+        }
+    }
+}

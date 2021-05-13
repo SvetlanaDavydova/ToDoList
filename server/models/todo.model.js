@@ -53,3 +53,11 @@ exports.changeStatus = function(status, id){
         })
     })
 }
+ exports.addCategory = function(todoId, catId){
+    return new Promise(function(resolve, reject){
+        connection.query("INSERT INTO todo_category (?,?)",[todoId, catId], (err,results,fields) => {
+            if(err) reject (err);
+            resolve (results);
+        })
+    })
+}

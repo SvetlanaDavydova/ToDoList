@@ -1,4 +1,4 @@
-const { deleteToDo, create, changeStatus, get, getById } = require("../models/todo.model");
+const { deleteToDo, create, changeStatus, get, getById, addCategory } = require("../models/todo.model");
 
 exports.getAll = (req,res) => {
     get()
@@ -26,6 +26,12 @@ exports.deleteById = (req,res) => {
 
 exports.updateStatus = (req,res) => {
     changeStatus(req.body.status, req.params.id)
+        .then((results) => res.send(results))
+        .catch((err) => res.status(500).send("error"))
+}
+
+exports.addToDoCategory = (req,res) => {
+    addCategory(req.params.id, req.params.category_id)
         .then((results) => res.send(results))
         .catch((err) => res.status(500).send("error"))
 }

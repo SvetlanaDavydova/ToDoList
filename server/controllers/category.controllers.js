@@ -1,25 +1,37 @@
 const { get, getById, create,  deleteCategory  } = require("../models/category.model")
 
-exports.getAll = (req, res) => {
-    get()
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.getAll = async (req, res) => {
+    try{
+        let results = await get();
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 };
 
-exports.getAllById = (req, res) => {
-    getById(req.params.id)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.getAllById = async (req, res) => {
+    try{
+        let results = await getById(req.params.id);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 };
 
-exports.createNew = (req,res) => {
-    create(req.body.catName)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.createNew = async (req,res) => {
+    try{
+        await create(req.body.catName);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 };
 
-exports.deleteById = (req,res) => {
-    deleteCategory(req.params.id)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.deleteById = async (req,res) => {
+    try{
+        await deleteToDo(req.params.id);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 };

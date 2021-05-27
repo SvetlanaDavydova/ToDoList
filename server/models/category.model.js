@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
 connection.connect(()=> console.log("connect to database"));
 
 
-exports.get = function(){
+exports.get = async function(){
     return new Promise(function(resolve, reject){
         connection.query("SELECT * FROM category", (err, results, fields) => {
             if(err) reject(err);
@@ -17,7 +17,7 @@ exports.get = function(){
     });
 };
 
-exports.getById = function(id){
+exports.getById = async function(id){
     return new Promise(function(resolve, reject){
         connection.query("SELECT * FROM category WHERE id = (?)", [id], (err, results, fields) => {
             if(err) reject(err);
@@ -26,7 +26,7 @@ exports.getById = function(id){
     });
 };
 
-exports.create = function(catName){
+exports.create = async function(catName){
     return new Promise(function(resolve, reject){
         connection.query("INSERT INTO category (cat_name) VALUES (?)", [catName], (err, results, fields) => {
             if(err) reject(err);
@@ -35,7 +35,7 @@ exports.create = function(catName){
     });
 };
 
-exports.deleteCategory = function(id){
+exports.deleteCategory = async function(id){
     return new Promise(function(resolve, reject){
         connection.query("DELETE FROM category WHERE id = (?)", [id], (err, results, fields) => {
             if(err) reject(err);

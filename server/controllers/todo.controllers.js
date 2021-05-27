@@ -1,37 +1,55 @@
 const { deleteToDo, create, changeStatus, get, getById, addCategory } = require("../models/todo.model");
 
-exports.getAll = (req,res) => {
-    get()
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.getAll = async (req,res) => {
+    try{
+        let results = await get();
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 }
 
-exports.getAllById = (req,res) => {
-    getById(req.params.id)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.getAllById = async (req,res) => {
+    try{
+        let results = await getById(req.params.id);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 }
 
-exports.createNew = (req,res) => {
-    create(req.body.title, req.body.status)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.createNew = async (req,res) => {
+    try{
+        await create(req.body.title, req.body.status);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 }
 
-exports.deleteById = (req,res) => {
-    deleteToDo(req.params.id)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.deleteById = async (req,res) => {
+    try{
+        await deleteToDo(req.params.id);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 }
 
-exports.updateStatus = (req,res) => {
-    changeStatus(req.body.status, req.params.id)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.updateStatus = async (req,res) => {
+    try{
+        await changeStatus(req.body.status, req.params.id);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 }
 
-exports.addToDoCategory = (req,res) => {
-    addCategory(req.params.id, req.params.category_id)
-        .then((results) => res.send(results))
-        .catch((err) => res.status(500).send("error"))
+exports.addToDoCategory = async (req,res) => {
+    try{
+        await  addCategory(req.params.id, req.params.category_id);
+        res.send(results);
+    } catch(err){
+        res.status(500).send(err.message);
+    }
 }

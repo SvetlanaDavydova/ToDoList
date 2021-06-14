@@ -1,6 +1,6 @@
-const express = require ("express");
+import express from "express";
+import { createNew, deleteById, updateStatus, getAll, getAllById, addToDoCategory } from "../controllers/todo.controllers";
 const todoRouter = express.Router();
-const { createNew, deleteById, updateStatus, getAll, getAllById, addToDoCategory } = require("../controllers/todo.controllers");
 
 todoRouter.get("/", getAll);
 todoRouter.get("/:id", getAllById);
@@ -9,4 +9,4 @@ todoRouter.delete("/:id", deleteById);
 todoRouter.put("/:id", updateStatus);
 todoRouter.post("/:id/categories/:category_id", addToDoCategory);
 
-module.exports = todoRouter;
+export default todoRouter;

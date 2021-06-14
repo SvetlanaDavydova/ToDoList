@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise');
+import mysql from 'mysql2/promise';
 
 const obj = {
     host: "localhost",
@@ -7,6 +7,8 @@ const obj = {
     password:"root"
 };
 
-exports.getConnection= async function(){
+async function getConnection() {
     return await mysql.createConnection(obj);
-};
+}
+
+export { getConnection };

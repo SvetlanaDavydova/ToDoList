@@ -1,30 +1,31 @@
-const {getConnection} = require("../config/dbconfig");
+import { getConnection } from "../config/dbconfig";
 
-exports.get =  async function(){
-    const connection = getConnection();
+async function get(){
+    const connection = await getConnection();
     const query = "SELECT * FROM category";
     const [rows, fields] = await connection.execute(query);
     return rows;
 }
 
-exports.getById = async function(id){
-    const connection = getConnection();
+async function getById(id:number){
+    const connection = await getConnection();    
     const query = "SELECT * FROM category WHERE id = (?)";
-    const [rows, fields] = await connection.execute(query,[id] );
+    const [rows, fields] = await connection.execute(query,[id]);
     return rows;
 }
 
-exports.create = async function(title,status){
-    const connection = getConnection();
+async function create(catName:string){
+    const connection = await getConnection();
     const query = "INSERT INTO category (cat_name) VALUES (?)";
     const [rows, fields] = await connection.execute(query,[catName]);
     return rows;
 }
 
-exports.deleteCategory = async function(id){
-    const connection = getConnection();
+async function deleteCategory(id:number){
+    const connection = await getConnection();
     const query = "DELETE FROM category WHERE id = (?)";
     const [rows, fields] = await connection.execute(query,[id] );
     return rows;
 };
 
+export{ deleteCategory, create, get, getById };

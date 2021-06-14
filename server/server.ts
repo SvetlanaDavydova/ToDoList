@@ -1,10 +1,9 @@
-const express = require("express");
+import express from "express";
+import todoRouter  from "./routes/todo.routes";
+import categoryRouter from "./routes/category.routes";
+
 const app = express();
 const PORT = 3001;
-
-
-const todoRouter = require("./routes/todo.routes");
-const categoryRouter = require("./routes/category.routes");
 
 app.use(express.json());
 
